@@ -28,6 +28,28 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .friend-board {
+            margin-top: 30px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2D9CDB;
+            color: white;
+        }
+        button {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -40,8 +62,62 @@
         <p>This is my first entry. I am sorting through my memories.</p>
     </div>
 
+    <div class="friend-board">
+        <h2>Top Dog Friend Board</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Friend Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="friendList">
+                <tr>
+                    <td>Fido</td>
+                    <td><button onclick="removeFriend(this)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Buddy</td>
+                    <td><button onclick="removeFriend(this)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Max</td>
+                    <td><button onclick="removeFriend(this)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Bella</td>
+                    <td><button onclick="removeFriend(this)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Luna</td>
+                    <td><button onclick="removeFriend(this)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="text" id="newFriend" placeholder="Enter friend's name">
+        <button onclick="addFriend()">Add Friend</button>
+    </div>
+
     <footer>
         <p>&copy; 2023 Your Name</p>
     </footer>
+
+    <script>
+        function removeFriend(button) {
+            const row = button.parentElement.parentElement; // Get the row of the button
+            row.remove(); // Remove the row from the table
+        }
+
+        function addFriend() {
+            const friendName = document.getElementById("newFriend").value; // Get the input value
+            if (friendName) {
+                const friendList = document.getElementById("friendList");
+                const newRow = document.createElement("tr"); // Create a new row
+                newRow.innerHTML = `<td>${friendName}</td><td><button onclick="removeFriend(this)">Delete</button></td>`;
+                friendList.appendChild(newRow); // Add the new row to the table
+                document.getElementById("newFriend").value = ""; // Clear the input
+            }
+        }
+    </script>
 </body>
 </html>
