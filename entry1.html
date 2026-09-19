@@ -71,28 +71,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="friendList">
-                <tr>
-                    <td>Fido</td>
-                    <td><button onclick="removeFriend(this)">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>Buddy</td>
-                    <td><button onclick="removeFriend(this)">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>Max</td>
-                    <td><button onclick="removeFriend(this)">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>Bella</td>
-                    <td><button onclick="removeFriend(this)">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>Luna</td>
-                    <td><button onclick="removeFriend(this)">Delete</button></td>
-                </tr>
-            </tbody>
+            <tbody id="friendList"></tbody>
         </table>
         <input type="text" id="newFriend" placeholder="Enter friend's name">
         <button onclick="addFriend()">Add Friend</button>
@@ -103,21 +82,51 @@
     </footer>
 
     <script>
-        function removeFriend(button) {
-            const row = button.parentElement.parentElement; // Get the row of the button
+        // Load friend names from localStorage
+        function loadFriends() {
+            const friends = JSON.parse(localStorage.getItem('friends')) || [];
+            friends.forEach(friend => {
+                addFriendToList(friend);
+            });
+        }
+
+        function addFriendToList(friendName) {
+            const friendList = document.getElementById("friendList");
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `<td>${friendName}</td><td><button onclick="removeFriend(this, '${friendName}')">Delete</button></td>`;
+            friendList.appendChild(newRow);
+        }
+
+        function removeFriend(button, friendName) {
+            const row = button.parentElement.parentElement;
             row.remove(); // Remove the row from the table
+            updateFriendsInLocalStorage(friendName, 'remove'); // Update localStorage
         }
 
         function addFriend() {
-            const friendName = document.getElementById("newFriend").value; // Get the input value
+            const friendName = document.getElementById("newFriend").value; // Get the input
             if (friendName) {
-                const friendList = document.getElementById("friendList");
-                const newRow = document.createElement("tr"); // Create a new row
-                newRow.innerHTML = `<td>${friendName}</td><td><button onclick="removeFriend(this)">Delete</button></td>`;
-                friendList.appendChild(newRow); // Add the new row to the table
+                addFriendToList(friendName); // Add to the table
                 document.getElementById("newFriend").value = ""; // Clear the input
+                updateFriendsInLocalStorage(friendName, 'add'); // Update localStorage
             }
         }
+
+        function updateFriendsInLocalStorage(friendName, action) {
+            const friends = JSON.parse(localStorage.getItem('friends')) || [];
+            if (action === 'add') {
+                friends.push(friendName);
+            } else if (action === 'remove') {
+                const index = friends.indexOf(friendName);
+                if (index > -1) {
+                    friends.splice(index, 1);
+                }
+            }
+            localStorage.setItem('friends', JSON.stringify(friends)); // Save back to localStorage
+        }
+
+        // Load existing friends when the page is loaded
+        loadFriends();
     </script>
 </body>
 </html>
