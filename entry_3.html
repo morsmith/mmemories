@@ -33,13 +33,6 @@
             padding-top: 20px;
             margin-top: 30px;
         }
-        #commentList {
-            margin-top: 20px;
-        }
-        textarea {
-            width: 100%; /* Full width */
-            padding: 10px; /* Padding for comfort */
-        }
     </style>
 </head>
 <body>
@@ -54,44 +47,32 @@
 
     <div class="comments-section">
         <h2>How Do <em>You</em> Remember This?</h2>
-        <form id="commentsForm">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            
-            <label for="comment">Comment:</label><br>
-            <textarea id="comment" name="comment" rows="4" required></textarea><br><br>
-            
-            <button type="submit">Submit</button>
-        </form>
-
-        <!-- Section where submitted comments will be displayed -->
-        <div id="commentList"></div>
+        <div id="giscus" data-repo="YOUR_GITHUB_REPO" data-repo-id="YOUR_REPO_ID" data-category="General" data-category-id="YOUR_CATEGORY_ID" data-mapping="url" data-term="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" data-dark-theme="preferred_color_scheme">
+        </div>
     </div>
     
-        <!-- Link to go back to the main index page -->
-        <p><a href="index.html">Go back to the main index page</a></p>
-    </div>
+    <p><a href="index.html">Go back to the main index page</a></p>
     
     <footer>
         <p>&copy; 2023 Your Name</p>
     </footer>
 
-    <script>
-        // Handle the comments submission
-        document.getElementById("commentsForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const name = document.getElementById("name").value; // Get name input
-            const comment = document.getElementById("comment").value; // Get comment input
-
-            const commentList = document.getElementById("commentList");
-            const newComment = document.createElement("p"); // Create a new paragraph
-            newComment.textContent = `${name}: ${comment}`; // Format comment
-            commentList.appendChild(newComment); // Add comment to the list
-
-            // Clear the form
-            this.reset();
-        });
+    <script src="https://giscus.app/client.js"
+            data-repo="morsmith/mmemories"
+            data-repo-id="R_kgDOUNuz-g"
+            data-category="General"
+            data-category-id="YOUR_CATEGORY_ID"
+            data-mapping="url"
+            data-term="pathname"
+            data-strict="1"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            data-dark-theme="preferred_color_scheme"
+            cross-origin="anonymous"
+            async>
     </script>
 </body>
 </html>
