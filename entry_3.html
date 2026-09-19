@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Diary Entry Title 2</title>
+    <title>Diary Entry Title 3</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -28,50 +28,28 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        img {
-            max-width: 100%; /* Ensure the image is responsive */
-            height: auto;    /* Maintain aspect ratio */
-            border-radius: 8px; /* Optional: add border radius */
-        }
-        a {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #2D9CDB; /* Link color (same as header) */
-        }
-        a:hover {
-            text-decoration: underline; /* Add underline on hover */
-        }
         .comments-section {
-            margin-top: 20px;
             border-top: 1px solid #ccc;
             padding-top: 20px;
+            margin-top: 30px;
         }
         #commentList {
             margin-top: 20px;
+        }
+        textarea {
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding for comfort */
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Diary Entry Title 2</h1>
+        <h1>Diary Entry Title 3</h1>
     </header>
     
     <div class="container">
-        <p><strong>Date:</strong> January 18, 2026</p>
-        <p>Remember what mom said after he left</p>
-
-        <!-- Add your audio file here -->
-        <audio controls>
-            <source src="audio/lofivision-rain-and-wind-chimes-314370.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        
-        <!-- Add your image here -->
-        <img src="images/moms stained glass.JPG" alt="my mom made this window">
-
-        <!-- Link to go back to the main index page -->
-        <p><a href="index.html">Go back to the main index page</a></p>
+        <p><strong>Date:</strong> May 25, 2026</p>
+        <p>You still went to work the next day.</p>
     </div>
 
     <div class="comments-section">
@@ -86,6 +64,7 @@
             <button type="submit">Submit</button>
         </form>
 
+        <!-- Section where submitted comments will be displayed -->
         <div id="commentList"></div>
     </div>
 
@@ -94,16 +73,17 @@
     </footer>
 
     <script>
+        // Handle the comments submission
         document.getElementById("commentsForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default form submission
 
-            const name = document.getElementById("name").value;
-            const comment = document.getElementById("comment").value;
+            const name = document.getElementById("name").value; // Get name input
+            const comment = document.getElementById("comment").value; // Get comment input
 
             const commentList = document.getElementById("commentList");
-            const newComment = document.createElement("p");
-            newComment.textContent = `${name}: ${comment}`;
-            commentList.appendChild(newComment);
+            const newComment = document.createElement("p"); // Create a new paragraph
+            newComment.textContent = `${name}: ${comment}`; // Format comment
+            commentList.appendChild(newComment); // Add comment to the list
 
             // Clear the form
             this.reset();
