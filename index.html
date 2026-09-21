@@ -3,102 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mmemories</title>
+    <title>My mmemories</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: white; /* Change to match the image */
+            color: blue; /* Text color matching the numbers */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
             margin: 0;
-            padding: 20px;
         }
-        header {
-            text-align: center;
-            background-color: #2D9CDB;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .entry {
-            border-bottom: 1px solid #ccc;
-            padding: 15px 0;
-        }
-        .entry:last-child {
-            border-bottom: none;
-        }
-        .entry h2 {
-            margin: 0;
-            font-size: 20px;
-            color: #2D9CDB;
-        }
-        .entry p {
-            margin: 5px 0;
-        }
-        footer {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 20px;
-            color: #888;
+        .year {
+            font-size: 48px; /* Adjust size as needed */
+            margin: 20px 0; /* Spacing between years */
+            text-align: center; /* Center text */
         }
         a {
-            color: #2D9CDB;
-            text-decoration: none;
-        }
-        .year-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        .year-links a {
-            font-size: 36px; /* Adjust size as needed */
-            color: blue; /* Link color for years */
+            color: blue; /* Link color */
             text-decoration: none; /* No underline */
-            margin: 10px 0; /* Spacing between years */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My mmemories</h1>
-    </header>
-    
-    <div class="container">
-        <div class="entry">
-            <h2><a href="entry1.html">Diary Entry Title 1</a></h2>
-            <p><strong>Date:</strong> October 20, 2023</p>
-            <p>This is my first entry. I am sorting through my memories.</p>
-        </div>
-
-        <div class="entry">
-            <h2><a href="entry_2.html">Diary Entry Title 2</a></h2>
-            <p><strong>Date:</strong> January 18, 2026</p>
-            <p>Remember what mom said after he left.</p>
-        </div>
-
-        <div class="entry">
-            <h2><a href="entry_3.html">Diary Entry Title 3</a></h2>
-            <p><strong>Date:</strong> May 25, 2026</p>
-            <p>You still went to work the next day.</p>
-        </div>
-    </div>
-
-    <div class="year-links">
-        <a href="index_2024.html">2024</a>
-        <a href="#">2025</a> <!-- You can update or link this -->
-        <a href="#">2026</a> <!-- You can update or link this -->
-    </div>
-
-    <footer>
-        <p>&copy; 2023 Your Name. All rights reserved. | <a href="#">Contact</a></p>
-    </footer>
+    <div class="year"><a href="index_2024.html">2024</a></div>
+    <div class="year">2025</div>
+    <div class="year">2026</div>
 </body>
 </html>
